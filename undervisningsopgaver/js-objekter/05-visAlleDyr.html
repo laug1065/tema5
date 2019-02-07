@@ -22,17 +22,27 @@
 
         };
 
-        document.addEventListener("DOMContentLoaded", start);
 
 
-        function start() {
 
-            let alleDyr = document.querySelector("#dyr");
-            dest.textContent = `Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`;
-            dest.innerHTML += `<br><img src="${dyr.billede}" alt=${dyr.navn}">`;
 
-        }
-        consol.log(alleDyr);
+        let alleDyr = [{
+                "navn": "frø",
+                "type": "amfibie",
+                "levested": "vandhuld",
+                "billede": "http://helf-kea.dk/test/gris.png"
+            }, {
+                "navn": "mus",
+                "type": "rotte",
+                "levested": "lortehul",
+                "billede": "http://helf-kea.dk/test/gris.png"
+            }
+
+
+
+        ];
+
+        console.log(alleDyr);
     </script>
 
 </body>
