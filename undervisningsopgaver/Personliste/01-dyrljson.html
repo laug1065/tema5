@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hola</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .dyr {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 5px;
+
+
+
+        }
+
+        img {
+            width: 100px;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="liste"></div>
+
+    <script>
+        let alleDyr = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            let dest = document.querySelector("#liste");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                alleDyr = await jsonData.json();
+                visDyr();
+            }
+
+            function visDyr() {
+                alleDyr.forEach((alleDyr) => {
+                    dest.innerHTML += `
+                        <div class="dyr">
+                            <h2>${alleDyr.navn}</h2>
+
+                            <img src="${alleDyr.billede}" alt="${alleDyr.navn}">
+                            <p>Github: ${alleDyr.github}</p>
+                            <p>Alder: ${alleDyr.alder}</p>
+<p>Køn: ${alleDyr.køn}</p>
+<p>Email: ${alleDyr.email}</p>
+<p>Hold: ${alleDyr.hold}</p>
+<p>Historie: ${alleDyr.historie}</p>
+                        </div>`;
+                })
+            }
+            getJson();
+        }
+    </script>
+</body>
+
+</html>
